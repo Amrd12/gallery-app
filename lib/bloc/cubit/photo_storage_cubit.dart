@@ -7,7 +7,7 @@ part 'photo_storage_state.dart';
 
 class PhotoStorageCubit extends Cubit<PhotoStorageState> {
   PhotoStorageCubit() : super(PhotoStorageInitial());
-  final Storage storage = Storage();
+  final Storage storage = const Storage();
 
   List<PhotoModel> photos = [];
   List<PhotoModel> searchphotos = [];

@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           Title: "Home",
           preferredSize: Size.fromHeight(wid * .05),
         ),
-        body: CustomBlocStorage(),
+        body: const CustomBlocStorage(),
       ),
     );
   }

@@ -19,7 +19,7 @@ class SearchApiCubit extends Cubit<SearchApiState> {
     }
     await repo.getSearchpage(query, type).then((photos) {
       PhotoResults.addAll(photos);
-      emit(SearchApiSuccess(this.PhotoResults));
+      emit(SearchApiSuccess(PhotoResults));
     });
     return PhotoResults;
   }

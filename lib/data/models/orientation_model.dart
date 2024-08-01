@@ -5,10 +5,10 @@ class OrientationModel {
   final List<String> _orientationList = ["", "landscape", "portrait", "square"];
 
   final _orientationIcons = {
-    "": Icon(Icons.not_interested),
-    "landscape": Icon(Icons.landscape),
-    "portrait": Icon(Icons.portrait),
-    "square": Icon(Icons.photo),
+    "": const Icon(Icons.not_interested),
+    "landscape": const Icon(Icons.landscape),
+    "portrait": const Icon(Icons.portrait),
+    "square": const Icon(Icons.photo),
   };
 
   String get mode => _orientationList[item.value];
@@ -18,7 +18,7 @@ class OrientationModel {
     item.value = (item.value + 1) % _orientationList.length;
   }
 
-  void set mode(String newMode) {
+  set mode(String newMode) {
     int index = _orientationList.indexOf(newMode);
     if (index != -1) {
       item.value = index;

@@ -3,6 +3,7 @@ import '../api/curatedphotosAPi.dart';
 import '../models/Photo_Model.dart';
 
 class PhotosRepo extends Curatedphotosapi {
+  @override
   final Storage storage = const Storage();
 
   Future<List<PhotoModel>> photspage() async {

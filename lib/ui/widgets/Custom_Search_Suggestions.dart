@@ -44,7 +44,7 @@ class _CustomSearchSuggestionsState extends State<CustomSearchSuggestions> {
 
         return Container(
           width: double.maxFinite,
-          padding: EdgeInsets.only(left: 15),
+          padding: const EdgeInsets.only(left: 15),
           child: ListView.builder(
             itemCount: Search.length,
             itemBuilder: (context, index) {
@@ -52,7 +52,7 @@ class _CustomSearchSuggestionsState extends State<CustomSearchSuggestions> {
               return ListTile(
                 onTap: () => widget.onPressed!(item.name, item.type, context),
                 leading: orientationIcons[item.type],
-                contentPadding: EdgeInsets.all(0),
+                contentPadding: const EdgeInsets.all(0),
                 title: Text(item.name),
                 subtitle: Text(item.date),
                 trailing: Row(
@@ -63,7 +63,7 @@ class _CustomSearchSuggestionsState extends State<CustomSearchSuggestions> {
                     const SizedBox(width: 10),
                     IconButton(
                         onPressed: () => del(item),
-                        icon: Icon(Icons.delete_forever))
+                        icon: const Icon(Icons.delete_forever))
                   ],
                 ),
               );

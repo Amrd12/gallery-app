@@ -1,6 +1,5 @@
 // api
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 const baseurl = "https://api.pexels.com/v1/";
 const CuratedPhotos = "curated";

@@ -5,7 +5,7 @@ import 'Custom_Icon.dart';
 import 'Custom_Image.dart';
 
 class PhotoWidget extends StatelessWidget {
-  PhotoWidget({super.key, required this.photo});
+  const PhotoWidget({super.key, required this.photo});
   final PhotoModel photo;
   Color get av_color =>
       Color(int.parse('FF${photo.avg_color.substring(1)}', radix: 16));
@@ -16,7 +16,7 @@ class PhotoWidget extends StatelessWidget {
         context: context,
         builder: (context) {
           return Center(
-            child: Container(
+            child: SizedBox(
               width: width - 20,
               height: height - 20,
               child: GestureDetector(

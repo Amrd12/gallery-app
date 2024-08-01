@@ -14,7 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
-  await Storage().makeBaseDirectory();
+  await const Storage().makeBaseDirectory();
   Hive.registerAdapter(PhotoModelAdapter());
   Hive.registerAdapter(SearchModelAdapter());
   await Hive.openBox<PhotoModel>(hivebox);
@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
             BlocProvider(create: (context) => SearchStorageCubit()),
             BlocProvider(create: (context) => SearchApiCubit()),
           ],
-          child: Scaffold(body: CustomNavigationbar()),
+          child: const Scaffold(body: CustomNavigationbar()),
         ));
   }
 }

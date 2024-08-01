@@ -12,7 +12,7 @@ class CustomImageLocal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.file(
-      Storage().imageFile(photo.id.toString()),
+      const Storage().imageFile(photo.id.toString()),
       fit: BoxFit.cover,
     );
   }

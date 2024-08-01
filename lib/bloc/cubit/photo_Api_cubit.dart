@@ -18,7 +18,7 @@ class PhotoApiCubit extends Cubit<PhotoApiState> {
       this.photos.addAll(photos);
       emit(PhotoApiLoaded(this.photos));
     });
-    return this.photos;
+    return photos;
   }
 
   nextpage() => repo.nextpage();

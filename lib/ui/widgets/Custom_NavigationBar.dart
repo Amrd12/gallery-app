@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gallaryapp/constans/colors.dart';
 import 'package:gallaryapp/constans/strings.dart';
 import 'package:gallaryapp/data/models/Navigation_Item.dart';
 import 'package:gallaryapp/routes.dart';
 
 class CustomNavigationbar extends StatefulWidget {
-  CustomNavigationbar({super.key});
+  const CustomNavigationbar({super.key});
 
   @override
   _CustomNavigationbarState createState() => _CustomNavigationbarState();
@@ -24,7 +22,7 @@ class _CustomNavigationbarState extends State<CustomNavigationbar> {
   Widget get expandedIcon => expanded
       ? IconButton(
           onPressed: onpressed,
-          icon: Icon(
+          icon: const Icon(
             Icons.menu_open,
             size: 30,
             color: MyColors.myWhite,
@@ -32,7 +30,7 @@ class _CustomNavigationbarState extends State<CustomNavigationbar> {
         )
       : IconButton(
           onPressed: onpressed,
-          icon: Icon(
+          icon: const Icon(
             Icons.menu,
             size: 30,
             color: MyColors.myWhite,
@@ -57,15 +55,15 @@ class _CustomNavigationbarState extends State<CustomNavigationbar> {
       return Row(
         children: [
           NavigationRail(
-            selectedIconTheme: IconThemeData(size: 100),
-            unselectedIconTheme: IconThemeData(size: 100),
+            selectedIconTheme: const IconThemeData(size: 100),
+            unselectedIconTheme: const IconThemeData(size: 100),
             groupAlignment: 0.0,
             extended: expanded,
             leading: expandedIcon,
             unselectedLabelTextStyle:
-                TextStyle(fontSize: 30, color: MyColors.myYellow),
+                const TextStyle(fontSize: 30, color: MyColors.myYellow),
             selectedLabelTextStyle:
-                TextStyle(fontSize: 30, color: MyColors.myWhite),
+                const TextStyle(fontSize: 30, color: MyColors.myWhite),
             backgroundColor: MyColors.myGrey,
             useIndicator: false,
             destinations: NavigationItems().railItems,

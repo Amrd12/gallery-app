@@ -10,7 +10,7 @@ class CustomSearchBar extends SearchDelegate {
   @override
   Widget? buildLeading(BuildContext context) => IconButton(
       onPressed: () => Navigator.of(context).pop(res),
-      icon: Icon(Icons.arrow_back));
+      icon: const Icon(Icons.arrow_back));
 
   @override
   List<Widget>? buildActions(BuildContext context) => [
@@ -24,9 +24,9 @@ class CustomSearchBar extends SearchDelegate {
         ),
         IconButton(
             onPressed: () {
-              this.query = '';
+              query = '';
             },
-            icon: Icon(Icons.close))
+            icon: const Icon(Icons.close))
       ];
 
   @override

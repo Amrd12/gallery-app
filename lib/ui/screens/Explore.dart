@@ -28,7 +28,7 @@ class Explore extends StatelessWidget {
               onlineSearch: true,
               searchavilable: connected,
             ),
-            body: connected ? CustomBlocApi() : const ofline_widget(),
+            body: connected ? const CustomBlocApi() : const ofline_widget(),
           ),
         );
       },
