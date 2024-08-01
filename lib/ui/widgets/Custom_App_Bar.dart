@@ -10,11 +10,13 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Size preferredSize;
   final bool onlineSearch;
   final String Title;
+  final bool searchavilable;
   CustomAppBar(
       {Key? key,
       required this.Title,
       required this.preferredSize,
-      this.onlineSearch = false})
+      this.onlineSearch = false,
+      this.searchavilable = true})
       : super(key: key);
 
   @override
@@ -59,17 +61,19 @@ class _CustomAppBarState extends State<CustomAppBar> {
               controller: controller,
               onChanged:
                   BlocProvider.of<PhotoStorageCubit>(context).searchPhotosPage),
-      actions: [
-        widget.onlineSearch
-            ? IconButton(
-                icon: Icon(
-                  Icons.search,
-                  size: (he * .7),
-                ),
-                onPressed: () =>
-                    showSearch(context: context, delegate: CustomSearchBar()))
-            : iconButton
-      ],
+      actions: widget.searchavilable
+          ? [
+              widget.onlineSearch
+                  ? IconButton(
+                      icon: Icon(
+                        Icons.search,
+                        size: (he * .7),
+                      ),
+                      onPressed: () => showSearch(
+                          context: context, delegate: CustomSearchBar()))
+                  : iconButton
+            ]
+          : [],
     );
   }
 

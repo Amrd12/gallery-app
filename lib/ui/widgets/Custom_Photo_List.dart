@@ -13,11 +13,12 @@ class CustomPhotoList extends StatefulWidget {
 
 class _CustomPhotoListState extends State<CustomPhotoList> {
   ScrollController? _scrollController;
-
+  late bool page;
   @override
   void initState() {
     super.initState();
     if (widget.onPressed != null) {
+      page = true;
       _scrollController = ScrollController();
       _scrollController!.addListener(_scrollListener);
     }
@@ -34,9 +35,11 @@ class _CustomPhotoListState extends State<CustomPhotoList> {
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.onPressed != null || widget.photos.isEmpty == false) {
-        if (_scrollController!.position.maxScrollExtent < height)
-          widget.onPressed!();
+      if (widget.onPressed != null &&
+          _scrollController!.position.maxScrollExtent < height &&
+          page) {
+        widget.onPressed!();
+        page = false;
       }
     });
 
@@ -65,9 +68,12 @@ class _CustomPhotoListState extends State<CustomPhotoList> {
     }
   }
 
-  void _scrollListener() {
+  void _scrollListener() async {
     if (_scrollController!.position.pixels >=
-        _scrollController!.position.maxScrollExtent - 50) {
+            _scrollController!.position.maxScrollExtent - 50 &&
+        page) {
+      page = false;
+      print("scrolling");
       widget.onPressed!();
     }
   }

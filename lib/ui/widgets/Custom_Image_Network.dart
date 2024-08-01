@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/models/Photo_Model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomImageNetwork extends StatelessWidget {
   const CustomImageNetwork({super.key, required this.photo});
@@ -8,10 +9,10 @@ class CustomImageNetwork extends StatelessWidget {
       Color(int.parse('FF${photo.avg_color.substring(1)}', radix: 16));
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      photo.src["original"]!,
+    return CachedNetworkImage(
+      imageUrl: photo.src["original"]!,
       fit: BoxFit.cover,
-      loadingBuilder: _loadingImage,
+      progressIndicatorBuilder: _loadingImage,
     );
   }
 
@@ -20,9 +21,8 @@ class CustomImageNetwork extends StatelessWidget {
       return child; // Image has loaded
     } else {
       // Calculate progress
-      double progress = loadingProgress.expectedTotalBytes != null
-          ? loadingProgress.cumulativeBytesLoaded /
-              (loadingProgress.expectedTotalBytes ?? 1)
+      double progress = loadingProgress.progress != null
+          ? loadingProgress.downloaded / (loadingProgress.totalSize ?? 1)
           : 0.0;
 
       return Center(

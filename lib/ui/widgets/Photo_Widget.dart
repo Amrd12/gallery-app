@@ -19,7 +19,10 @@ class PhotoWidget extends StatelessWidget {
             child: Container(
               width: width - 20,
               height: height - 20,
-              child: CustomImage(photo: photo),
+              child: GestureDetector(
+                child: CustomImage(photo: photo),
+                onTap: () => Navigator.of(context).pop(),
+              ),
             ),
           );
         });
