@@ -20,6 +20,7 @@ class Api {
     dio = Dio(options);
   }
 
+  /// TO Request url from Api
   Future<Map<String, dynamic>> get(String url,
       {Map<String, dynamic>? queryParameters}) async {
     try {
@@ -41,9 +42,12 @@ class Api {
           .download(url!, "$dic/${photo.id}.jpg", onReceiveProgress: onreceve)
           .then((_) {
         final box = Hive.box<PhotoModel>(hivebox);
-        if (!photo.isInBox) box.add(photo);
+
+        if (!storage.isSaved(photo.id)) {
+          if (!photo.isInBox) box.add(photo);
+        }
         photo.isdownloaded = true;
-        if (!storage.isSaved(photo.id)) photo.save();
+        photo.save();
       });
     }
   }

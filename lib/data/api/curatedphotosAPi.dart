@@ -8,8 +8,9 @@ class Curatedphotosapi extends Api {
     print("page:   $_page");
   }
 
-  Map<String, dynamic> get _pagequerry => {"page": _page};
+  Map<String, dynamic> get _pagequerry => {"page": _page, "per_page": 20};
 
+  ///request page from api [Api]
   Future<Map<String, dynamic>> get photospage =>
       get(CuratedPhotos, queryParameters: _pagequerry);
 }

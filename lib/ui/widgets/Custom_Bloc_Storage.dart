@@ -5,12 +5,23 @@ import 'package:gallaryapp/constans/colors.dart';
 import 'package:gallaryapp/data/models/Photo_Model.dart';
 import 'package:gallaryapp/ui/widgets/Custom_Photo_List.dart';
 
-class CustomBlocStorage extends StatelessWidget {
+class CustomBlocStorage extends StatefulWidget {
   const CustomBlocStorage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<CustomBlocStorage> createState() => _CustomBlocStorageState();
+}
+
+class _CustomBlocStorageState extends State<CustomBlocStorage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     context.read<PhotoStorageCubit>().getPhotosPage();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BlocBuilder<PhotoStorageCubit, PhotoStorageState>(
       builder: (context, state) {
         if (state is PhotoStorageLoaded) {

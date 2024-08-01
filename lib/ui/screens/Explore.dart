@@ -28,11 +28,11 @@ class Explore extends StatelessWidget {
               onlineSearch: true,
               searchavilable: connected,
             ),
-            body: connected ? const CustomBlocApi() : const ofline_widget(),
+            body: connected ? const CustomBlocApi() : const OfflineWidget(),
           ),
         );
       },
-      child: const ofline_widget(),
+      child: const OfflineWidget(),
     );
   }
 }

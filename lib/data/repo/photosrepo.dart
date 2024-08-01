@@ -7,8 +7,8 @@ class PhotosRepo extends Curatedphotosapi {
   final Storage storage = const Storage();
 
   Future<List<PhotoModel>> photspage() async {
-    final js = await photospage;
-    return PhotosMap(js);
+    final json = await photospage;
+    return PhotosMap(json);
   }
 
   List<PhotoModel> PhotosMap(Map<String, dynamic> js) {

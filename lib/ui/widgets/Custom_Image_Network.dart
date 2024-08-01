@@ -6,7 +6,7 @@ class CustomImageNetwork extends StatelessWidget {
   const CustomImageNetwork(
       {super.key, required this.photo, this.src = "small"});
   final PhotoModel photo;
-  final String? src;
+  final String src;
   Color get av_color =>
       Color(int.parse('FF${photo.avg_color.substring(1)}', radix: 16));
   @override

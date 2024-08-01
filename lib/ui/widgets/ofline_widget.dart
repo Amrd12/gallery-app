@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ofline_widget extends StatelessWidget {
-  const ofline_widget({
+class OfflineWidget extends StatelessWidget {
+  const OfflineWidget({
     super.key,
   });
 

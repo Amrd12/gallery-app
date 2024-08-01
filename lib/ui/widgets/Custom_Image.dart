@@ -13,8 +13,9 @@ class CustomImage extends StatelessWidget {
       Color(int.parse('FF${photo.avg_color.substring(1)}', radix: 16));
   @override
   Widget build(BuildContext context) {
-    return (photo.isdownloaded || const Storage().isdownloaded(photo.id.toString()))
+    return (photo.isdownloaded ||
+            const Storage().isdownloaded(photo.id.toString()))
         ? CustomImageLocal(photo: photo)
-        : CustomImageNetwork(photo: photo, src: src);
+        : CustomImageNetwork(photo: photo, src: src!);
   }
 }

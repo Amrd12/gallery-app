@@ -45,7 +45,7 @@ class PhotoWidget extends StatelessWidget {
               child: SizedBox(
                   width: photo.width,
                   height: photo.height,
-                  child: CustomImage(photo: photo)),
+                  child: CustomImage(photo: photo, src: "medium")),
             ),
           )),
     );

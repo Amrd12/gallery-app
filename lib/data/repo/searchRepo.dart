@@ -7,7 +7,7 @@ import '../models/Photo_Model.dart';
 import '../models/Search_Model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class Searchrepo extends searchapi {
+class Searchrepo extends SearchApi {
   PhotosRepo photosrepo = PhotosRepo();
   List<SearchModel> get search =>
       Hive.box<SearchModel>(searchBox).values.toList();

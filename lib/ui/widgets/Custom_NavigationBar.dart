@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gallaryapp/constans/colors.dart';
 import 'package:gallaryapp/constans/strings.dart';
-import 'package:gallaryapp/data/models/Navigation_Item.dart';
+import 'package:gallaryapp/ui/Navigation_Item.dart';
 import 'package:gallaryapp/routes.dart';
 
 class CustomNavigationbar extends StatefulWidget {

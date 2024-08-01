@@ -23,28 +23,43 @@ class CustomPhotoList extends StatelessWidget {
         ),
       );
     } else {
-      return SingleChildScrollView(
+      return GridView.builder(
         controller: scrollController,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minHeight: MediaQuery.of(context).size.height,
-          ),
-          child: GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: width ~/ 300,
-            ),
-            itemCount: photos.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(4),
-                child: PhotoWidget(photo: photos[index]),
-              );
-            },
-          ),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: width ~/ 300,
         ),
+        itemCount: photos.length,
+        itemBuilder: (context, index) {
+          return GridviewListItem(photos: photos[index]);
+        },
       );
     }
   }
+}
+
+class GridviewListItem extends StatefulWidget {
+  const GridviewListItem({
+    super.key,
+    required this.photos,
+  });
+
+  final PhotoModel photos;
+
+  @override
+  State<GridviewListItem> createState() => _GridviewListItemState();
+}
+
+class _GridviewListItemState extends State<GridviewListItem>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Padding(
+      padding: const EdgeInsets.all(4),
+      child: PhotoWidget(photo: widget.photos),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }
