@@ -20,7 +20,7 @@ class PhotoWidget extends StatelessWidget {
               width: width - 20,
               height: height - 20,
               child: GestureDetector(
-                child: CustomImage(photo: photo),
+                child: CustomImage(photo: photo, src: "original"),
                 onTap: () => Navigator.of(context).pop(),
               ),
             ),

@@ -8,9 +8,6 @@ class searchapi extends Api {
   Map<String, dynamic> get _pagequerry =>
       {"page": _page, "query": _query, "orientation": _type};
 
-  // Future<Map<String, dynamic>> get photospage =>
-  //     get(CuratedPhotos, queryParameters: _pagequerry);
-
   Future<Map<String, dynamic>> getSearch(String query, String type) async {
     _query = query;
     if (type != "") _type = type;

@@ -3,14 +3,16 @@ import '../../data/models/Photo_Model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomImageNetwork extends StatelessWidget {
-  const CustomImageNetwork({super.key, required this.photo});
+  const CustomImageNetwork(
+      {super.key, required this.photo, this.src = "small"});
   final PhotoModel photo;
+  final String? src;
   Color get av_color =>
       Color(int.parse('FF${photo.avg_color.substring(1)}', radix: 16));
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: photo.src["original"]!,
+      imageUrl: photo.src[src]!,
       fit: BoxFit.cover,
       progressIndicatorBuilder: _loadingImage,
     );
