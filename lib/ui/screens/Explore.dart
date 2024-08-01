@@ -25,6 +25,7 @@ class Explore extends StatelessWidget {
             appBar: CustomAppBar(
               Title: "Explore",
               preferredSize: Size.fromHeight(wid * .05),
+              onlineSearch: true,
               searchavilable: connected,
             ),
             body: connected ? CustomBlocApi() : const ofline_widget(),

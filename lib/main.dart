@@ -33,7 +33,13 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
         title: "Gallary App",
         debugShowCheckedModeBanner: false,
-        home: Scaffold(body: CustomNavigationbar()));
+        home: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => SearchStorageCubit()),
+            BlocProvider(create: (context) => SearchApiCubit()),
+          ],
+          child: Scaffold(body: CustomNavigationbar()),
+        ));
   }
 }
 
