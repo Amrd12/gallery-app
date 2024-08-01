@@ -12,16 +12,16 @@ class SearchApiCubit extends Cubit<SearchApiState> {
 
   Searchrepo repo = Searchrepo();
 
-  List<PhotoModel> getPhotosPage(String query, String type,
-      {bool newsearch = false}) {
+  Future<List<PhotoModel>> getPhotosPage(String query, String type,
+      {bool newsearch = false}) async {
     if (newsearch) {
       PhotoResults = [];
     }
-    repo.getSearchpage(query, type).then((photos) {
+    await repo.getSearchpage(query, type).then((photos) {
       PhotoResults.addAll(photos);
       emit(SearchApiSuccess(this.PhotoResults));
     });
-    return this.PhotoResults;
+    return PhotoResults;
   }
 
   nextpage() => repo.nextpage();

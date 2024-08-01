@@ -12,8 +12,8 @@ class PhotoApiCubit extends Cubit<PhotoApiState> {
 
   PhotoApiCubit() : super(PhotoApiInitial());
 
-  List<PhotoModel> getPhotosPage() {
-    repo.photspage().then((photos) {
+  Future<List<PhotoModel>> getPhotosPage() async {
+    await repo.photspage().then((photos) {
       print("Success ========================");
       this.photos.addAll(photos);
       emit(PhotoApiLoaded(this.photos));

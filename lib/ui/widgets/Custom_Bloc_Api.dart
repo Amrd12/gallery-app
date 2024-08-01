@@ -5,23 +5,49 @@ import '../../constans/colors.dart';
 import '../../data/models/Photo_Model.dart';
 import 'Custom_Photo_List.dart';
 
-class CustomBlocApi extends StatelessWidget {
-  CustomBlocApi({super.key});
-  void onpressed(BuildContext context) {
+class CustomBlocApi extends StatefulWidget {
+  const CustomBlocApi({super.key});
+
+  @override
+  State<CustomBlocApi> createState() => _CustomBlocApiState();
+}
+
+class _CustomBlocApiState extends State<CustomBlocApi> {
+  final ScrollController _scrollController = ScrollController();
+
+  Future<void> onpressed(BuildContext context) async {
     context.read<PhotoApiCubit>().nextpage();
+    await context.read<PhotoApiCubit>().getPhotosPage();
+  }
+
+  void _scrollListener() async {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent) {
+      await onpressed(context);
+    }
+  }
+
+  @override
+  void initState() {
     context.read<PhotoApiCubit>().getPhotosPage();
+    _scrollController.addListener(_scrollListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    context.read<PhotoApiCubit>().getPhotosPage();
     return BlocBuilder<PhotoApiCubit, PhotoApiState>(
       builder: (context, state) {
         if (state is PhotoApiLoaded) {
           List<PhotoModel> photos = state.photos;
-          print(photos.length);
           return CustomPhotoList(
-              photos: photos, onPressed: () => onpressed(context));
+              photos: photos, scrollController: _scrollController);
         }
         return const Center(
             child: CircularProgressIndicator(

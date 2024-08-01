@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallaryapp/bloc/cubit/photo_storage_cubit.dart';
+import 'package:gallaryapp/bloc/cubit/search_api_cubit.dart';
+import 'package:gallaryapp/bloc/cubit/search_storage_cubit.dart';
 import '../../constans/colors.dart';
 import 'Custom_Search_Bar.dart';
 
@@ -43,37 +45,43 @@ class _CustomAppBarState extends State<CustomAppBar> {
             ),
             onPressed: searchon));
 
-    return AppBar(
-      leading: search
-          ? null
-          : IconButton(
-              onPressed: searchon,
-              icon: Icon(Icons.arrow_back),
-              iconSize: he * .7,
-            ),
-      backgroundColor: MyColors.myYellow,
-      title: search
-          ? Text(
-              widget.Title,
-              style: TextStyle(color: MyColors.myGrey, fontSize: (he * .7)),
-            )
-          : TextField(
-              controller: controller,
-              onChanged:
-                  BlocProvider.of<PhotoStorageCubit>(context).searchPhotosPage),
-      actions: widget.searchavilable
-          ? [
-              widget.onlineSearch
-                  ? IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        size: (he * .7),
-                      ),
-                      onPressed: () => showSearch(
-                          context: context, delegate: CustomSearchBar()))
-                  : iconButton
-            ]
-          : [],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => SearchStorageCubit()),
+        BlocProvider(create: (context) => SearchApiCubit()),
+      ],
+      child: AppBar(
+        leading: search
+            ? null
+            : IconButton(
+                onPressed: searchon,
+                icon: Icon(Icons.arrow_back),
+                iconSize: he * .7,
+              ),
+        backgroundColor: MyColors.myYellow,
+        title: search
+            ? Text(
+                widget.Title,
+                style: TextStyle(color: MyColors.myGrey, fontSize: (he * .7)),
+              )
+            : TextField(
+                controller: controller,
+                onChanged: BlocProvider.of<PhotoStorageCubit>(context)
+                    .searchPhotosPage),
+        actions: widget.searchavilable
+            ? [
+                widget.onlineSearch
+                    ? IconButton(
+                        icon: Icon(
+                          Icons.search,
+                          size: (he * .7),
+                        ),
+                        onPressed: () => showSearch(
+                            context: context, delegate: CustomSearchBar()))
+                    : iconButton
+              ]
+            : [],
+      ),
     );
   }
 

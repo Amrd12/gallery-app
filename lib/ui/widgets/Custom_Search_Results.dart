@@ -6,7 +6,7 @@ import 'package:gallaryapp/ui/widgets/Custom_Photo_List.dart';
 
 import '../../bloc/cubit/search_api_cubit.dart';
 
-class CustomSearchResults extends StatelessWidget {
+class CustomSearchResults extends StatefulWidget {
   const CustomSearchResults({
     super.key,
     required this.querry,
@@ -16,14 +16,45 @@ class CustomSearchResults extends StatelessWidget {
   final String querry;
   final String type;
 
-  void onpressed(BuildContext context) {
+  @override
+  State<CustomSearchResults> createState() => _CustomSearchResultsState();
+}
+
+class _CustomSearchResultsState extends State<CustomSearchResults> {
+  ScrollController? _scrollController;
+
+  Future<void> onpressed(BuildContext context) async {
     context.read<SearchApiCubit>().nextpage();
-    context.read<SearchApiCubit>().getPhotosPage(querry, type);
+    await context
+        .read<SearchApiCubit>()
+        .getPhotosPage(widget.querry, widget.type);
+  }
+
+  void _scrollListener() async {
+    if (_scrollController!.position.pixels >=
+        _scrollController!.position.maxScrollExtent) {
+      await onpressed(context);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    context
+        .read<SearchApiCubit>()
+        .getPhotosPage(widget.querry, widget.type, newsearch: true);
+    _scrollController = ScrollController();
+    _scrollController!.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController!.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    context.read<SearchApiCubit>().getPhotosPage(querry, type, newsearch: true);
     return BlocBuilder<SearchApiCubit, SearchApiState>(
         builder: (context, state) {
       if (state is SearchApiSuccess) {
@@ -32,7 +63,7 @@ class CustomSearchResults extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: CustomPhotoList(
             photos: photos,
-            onPressed: () => onpressed,
+            scrollController: _scrollController,
           ),
         );
       }
