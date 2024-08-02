@@ -25,8 +25,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
     return Scaffold(
       body: IndexedStack(index: index, children: screen),
       bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: MyColors.myWhite,
-          unselectedItemColor: MyColors.myYellow,
+          selectedItemColor: MyColors.myYellow,
+          unselectedItemColor: MyColors.myWhite,
           backgroundColor: MyColors.myGrey,
           items: NavigationItems().bottomItems,
           currentIndex: index,
