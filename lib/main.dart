@@ -26,15 +26,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Gallary App",
-        debugShowCheckedModeBanner: false,
-        home: MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (context) => SearchStorageCubit()),
-            BlocProvider(create: (context) => SearchApiCubit()),
-          ],
-          child: const Scaffold(body: LayoutScreen()),
-        ));
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => SearchStorageCubit()),
+        BlocProvider(create: (context) => SearchApiCubit()),
+      ],
+      child: MaterialApp(
+          title: "Gallary App",
+          debugShowCheckedModeBanner: false,
+          home: const Scaffold(body: LayoutScreen())),
+    );
   }
 }
