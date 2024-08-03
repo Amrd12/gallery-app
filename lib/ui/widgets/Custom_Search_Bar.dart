@@ -43,5 +43,6 @@ class CustomSearchBar extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     return CustomSearchSuggestions(text: query, onPressed: onpress);
+  
   }
 }

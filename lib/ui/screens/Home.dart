@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("home");
     final wid = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => PhotoStorageCubit(),

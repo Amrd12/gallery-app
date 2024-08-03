@@ -50,7 +50,8 @@ class NavigationItems {
 
   static const List<NavigationItem> _items = [
     NavigationItem(0, homeRoute, Icons.home_outlined, Icons.home),
-    NavigationItem(1, exploreRoute, Icons.explore_outlined, Icons.explore)
+    NavigationItem(1, exploreRoute, Icons.explore_outlined, Icons.explore),
+    NavigationItem(2, layoutRoute, Icons.settings_outlined, Icons.settings)
   ];
 
   NavigationRailDestination _getNavigationRailDestination(int index) {

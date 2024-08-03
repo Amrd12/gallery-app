@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gallaryapp/constans/strings.dart';
 import 'package:gallaryapp/ui/screens/Explore.dart';
 import 'package:gallaryapp/ui/screens/Home.dart';
+import 'package:gallaryapp/ui/screens/theme-page.dart';
 
 import '../../constans/colors.dart';
 import '../Navigation_Item.dart';
@@ -14,7 +16,7 @@ class LayoutScreen extends StatefulWidget {
 
 class _LayoutScreenState extends State<LayoutScreen> {
   int index = 0;
-  List<Widget> screen = const [HomeScreen(), Explore()];
+  List<Widget> screen = const [HomeScreen(), Explore(), ThemePage()];
   void _onDestinationSelected(int selectedIndex) {
     index = selectedIndex;
     setState(() {});
@@ -28,9 +30,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
           selectedItemColor: MyColors.myYellow,
           unselectedItemColor: MyColors.myWhite,
           backgroundColor: MyColors.myGrey,
-          items: NavigationItems().bottomItems,
           currentIndex: index,
-          onTap: _onDestinationSelected),
+          onTap: _onDestinationSelected,
+          items: NavigationItems().bottomItems),
     );
   }
 }

@@ -13,6 +13,7 @@ const folderName = 'gallaryapp';
 const navigationRoute = "/";
 const homeRoute = "/home";
 const exploreRoute = "/explore";
+const layoutRoute = "/layout";
 //hive
 const hivebox = "PhotosBox";
 const searchBox = "searchbox";
