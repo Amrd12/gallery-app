@@ -4,7 +4,7 @@ import 'package:gallaryapp/constans/colors.dart';
 import 'package:gallaryapp/data/models/Photo_Model.dart';
 import 'package:gallaryapp/ui/widgets/Custom_Photo_List.dart';
 
-import '../../bloc/cubit/search_api_cubit.dart';
+import '../../../bloc/cubit/search_api_cubit.dart';
 
 class CustomSearchResults extends StatefulWidget {
   const CustomSearchResults({

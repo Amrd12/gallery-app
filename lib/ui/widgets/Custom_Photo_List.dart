@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/models/Photo_Model.dart';
-import 'Photo_Widget.dart';
+import 'photo_item/Photo_Widget.dart';
 
 class CustomPhotoList extends StatelessWidget {
   const CustomPhotoList(

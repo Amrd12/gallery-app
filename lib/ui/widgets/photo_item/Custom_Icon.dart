@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallaryapp/bloc/cubit/photo_storage_cubit.dart';
-import '../../Storage/Storage.dart';
-import '../../constans/strings.dart';
-import '../../data/api/network.dart';
-import '../../data/models/Photo_Model.dart';
+import '../../../Storage/Storage.dart';
+import '../../../constans/strings.dart';
+import '../../../data/api/network.dart';
+import '../../../data/models/Photo_Model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class CustomIcons extends StatefulWidget {

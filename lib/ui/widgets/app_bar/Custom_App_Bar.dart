@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallaryapp/bloc/cubit/photo_storage_cubit.dart';
-import '../../constans/colors.dart';
+import '../../../constans/colors.dart';
 import 'Custom_Search_Bar.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {

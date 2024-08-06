@@ -15,7 +15,6 @@ class CustomBlocStorage extends StatefulWidget {
 class _CustomBlocStorageState extends State<CustomBlocStorage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     context.read<PhotoStorageCubit>().getPhotosPage();
   }

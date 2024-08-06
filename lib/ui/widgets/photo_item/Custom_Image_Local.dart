@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../Storage/Storage.dart';
-import '../../data/models/Photo_Model.dart';
+import '../../../Storage/Storage.dart';
+import '../../../data/models/Photo_Model.dart';
 
 class CustomImageLocal extends StatelessWidget {
   const CustomImageLocal({super.key, required this.photo});

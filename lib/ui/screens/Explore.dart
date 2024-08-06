@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:gallaryapp/bloc/cubit/photo_Api_cubit.dart';
 import 'package:gallaryapp/ui/widgets/ofline_widget.dart';
-import 'package:gallaryapp/ui/widgets/Custom_App_Bar.dart';
+import 'package:gallaryapp/ui/widgets/app_bar/Custom_App_Bar.dart';
 import 'package:gallaryapp/ui/widgets/Custom_Bloc_Api.dart';
 
 class Explore extends StatelessWidget {

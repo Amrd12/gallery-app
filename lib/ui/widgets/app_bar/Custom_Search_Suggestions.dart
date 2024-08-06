@@ -59,7 +59,7 @@ class _CustomSearchSuggestionsState extends State<CustomSearchSuggestions> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Results: ${item.results.toString()}"),
+                    Text("Results ${item.results.toString()}"),
                     const SizedBox(width: 10),
                     IconButton(
                         onPressed: () => del(item),

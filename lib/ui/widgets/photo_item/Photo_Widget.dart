@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../constans/colors.dart';
-import '../../data/models/Photo_Model.dart';
+import '../../../constans/colors.dart';
+import '../../../data/models/Photo_Model.dart';
 import 'Custom_Icon.dart';
 import 'Custom_Image.dart';
 

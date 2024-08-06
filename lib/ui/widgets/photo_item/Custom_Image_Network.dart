@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../data/models/Photo_Model.dart';
+import '../../../data/models/Photo_Model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomImageNetwork extends StatelessWidget {

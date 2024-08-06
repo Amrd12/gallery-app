@@ -24,3 +24,6 @@ const Map<String, Widget> orientationIcons = {
   "portrait": Icon(Icons.portrait),
   "square": Icon(Icons.photo),
 };
+
+//prefrence
+const isdark_Pref = "isdark";

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gallaryapp/Storage/Storage.dart';
-import '../../data/models/Photo_Model.dart';
+import '../../../data/models/Photo_Model.dart';
 
 import 'Custom_Image_Local.dart';
 import 'Custom_Image_Network.dart';
