@@ -33,5 +33,19 @@ extension OrientationModeExtension on OrientationMode {
         return Icons.square;
     }
   }
-  
+}
+
+extension OrientationModeStringExtension on String {
+  OrientationMode toOrientationMode() {
+    switch (this) {
+      case "landscape":
+        return OrientationMode.landscape;
+      case "portrait":
+        return OrientationMode.portrait;
+      case "square":
+        return OrientationMode.square;
+      default:
+        return OrientationMode.none;
+    }
+  }
 }

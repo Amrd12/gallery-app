@@ -4,6 +4,7 @@ import 'package:gallaryapp/bloc/cubit/search_storage_cubit.dart';
 import 'package:gallaryapp/constans/colors.dart';
 import 'package:gallaryapp/constans/strings.dart';
 import 'package:gallaryapp/data/models/Search_Model.dart';
+import 'package:gallaryapp/ui/widgets/app_bar/orientation_enum.dart';
 
 class CustomSearchSuggestions extends StatefulWidget {
   const CustomSearchSuggestions(
@@ -51,7 +52,7 @@ class _CustomSearchSuggestionsState extends State<CustomSearchSuggestions> {
               final item = Search[index];
               return ListTile(
                 onTap: () => widget.onPressed!(item.name, item.type, context),
-                leading: orientationIcons[item.type],
+                leading: Icon(item.type.toOrientationMode().icon),
                 contentPadding: const EdgeInsets.all(0),
                 title: Text(item.name),
                 subtitle: Text(item.date),

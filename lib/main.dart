@@ -27,7 +27,6 @@ void main() async {
     await prefs.setBool(isdark_Pref, false);
     isdark = false;
   }
-  isdark as bool;
   //hive
   await Hive.initFlutter();
   Hive.registerAdapter(PhotoModelAdapter());
@@ -37,12 +36,12 @@ void main() async {
   //storage
   await const Storage().makeBaseDirectory();
 
-  runApp(MainApp(isdark: isdark));
+  runApp(MainApp(isdark: isdark as bool));
 }
 
 class MainApp extends StatelessWidget {
   MainApp({super.key, required this.isdark});
-  bool isdark;
+  final bool isdark;
   ThemeMode? theme;
   @override
   Widget build(BuildContext context) {

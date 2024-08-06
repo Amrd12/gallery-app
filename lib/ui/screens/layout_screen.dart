@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gallaryapp/constans/strings.dart';
 import 'package:gallaryapp/ui/screens/Explore.dart';
 import 'package:gallaryapp/ui/screens/Home.dart';
 import 'package:gallaryapp/ui/screens/theme-page.dart';

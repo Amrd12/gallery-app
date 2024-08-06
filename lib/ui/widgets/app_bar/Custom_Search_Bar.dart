@@ -10,9 +10,6 @@ class CustomSearchBar extends SearchDelegate {
     // Initialize searchFieldLabel with context-aware localization.
   }
 
-  @override
-  late final String searchFieldLabel;
-
   final ValueNotifier<OrientationMode> orientation =
       ValueNotifier(OrientationMode.none);
 
