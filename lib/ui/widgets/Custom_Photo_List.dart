@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../data/models/Photo_Model.dart';
 import 'photo_item/Photo_Widget.dart';
@@ -14,11 +15,11 @@ class CustomPhotoList extends StatelessWidget {
     final double width = MediaQuery.of(context).size.width;
 
     if (photos.isEmpty) {
-      return const Center(
+      return Center(
         child: Text(
           textAlign: TextAlign.center,
           maxLines: 3,
-          "Empty, please Add some Photos",
+          context.tr("empty"),
           style: TextStyle(fontSize: 30),
         ),
       );

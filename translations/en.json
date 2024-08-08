@@ -1,0 +1,13 @@
+{
+    "home" :"Home",
+    "explore" : "Explore",
+    "settings" :"Settings",
+    "Dark Mode" :"dark mode",
+    "Language":"Language",
+    "Language_ar":"arabic",
+    "Language_en":"english",
+    "empty":"Empty, please Add some Photoss",
+    "welcome":"welcome",
+    "next" : "next"
+
+}

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
@@ -7,7 +8,7 @@ import 'package:gallaryapp/ui/widgets/app_bar/Custom_App_Bar.dart';
 import 'package:gallaryapp/ui/widgets/Custom_Bloc_Api.dart';
 
 class Explore extends StatelessWidget {
-  const Explore({super.key});
+  Explore({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class Explore extends StatelessWidget {
           create: (context) => PhotoApiCubit(),
           child: Scaffold(
             appBar: CustomAppBar(
-              Title: "Explore",
+              Title: context.tr("explore"),
               preferredSize: Size.fromHeight(wid * .05),
               onlineSearch: true,
               searchavilable: connected,
