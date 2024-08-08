@@ -16,7 +16,6 @@ class ThemePage extends StatefulWidget {
 
 class _ThemePageState extends State<ThemePage> {
   ThemeMode theme = ThemeMode.light;
-  Locale locale = Locale("en");
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +31,9 @@ class _ThemePageState extends State<ThemePage> {
         builder: (context, state) {
           if (state is ThemeInitial) {
             theme = state.th;
-            locale = state.lo;
           }
 
           if (state is ChangeTheme) theme = state.theme;
-          if (state is ChangeLocale) locale = state.locale;
 
           bool value = theme == ThemeMode.dark;
 
@@ -61,7 +58,7 @@ class _ThemePageState extends State<ThemePage> {
                   Text("Language").tr(),
                   SizedBox(width: 20),
                   DropdownButton<Locale>(
-                    value: locale,
+                    value: context.locale,
                     items: [
                       DropdownMenuItem<Locale>(
                           value: Locale("en"),
@@ -70,8 +67,7 @@ class _ThemePageState extends State<ThemePage> {
                           value: Locale("ar"),
                           child: Text(context.tr("Language_ar"))),
                     ],
-                    onChanged: (value) =>
-                        BlocProvider.of<ThemeCubit>(context).changeLocale(),
+                    onChanged: (value) => context.setLocale(value!),
                   )
                 ],
               ),

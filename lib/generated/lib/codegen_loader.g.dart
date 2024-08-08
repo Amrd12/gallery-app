@@ -23,7 +23,8 @@ class CodegenLoader extends AssetLoader {
     "Language_ar": "العربية",
     "Language_en": "الانجليزية",
     "empty": "القائمة فارغة برجاء إضافة المزيد \n من العناصر",
-    "welcome": "التالى"
+    "welcome": "مرحبا بك",
+    "next": "التالى"
   };
   static const Map<String, dynamic> en = {
     "home": "Home",
@@ -34,7 +35,8 @@ class CodegenLoader extends AssetLoader {
     "Language_ar": "arabic",
     "Language_en": "english",
     "empty": "Empty, please Add some Photoss",
-    "welcome": "welcome"
+    "welcome": "welcome",
+    "next": "next"
   };
   static const Map<String, Map<String, dynamic>> mapLocales = {
     "ar": ar,

@@ -32,13 +32,7 @@ void main() async {
     await prefs.setBool(isdark_Pref, true);
     isdark = false;
   }
-  
-  bool? isen = prefs.getBool(isen_Pref);
-  print("isen $isen");
-  if (isen == null) {
-    await prefs.setBool(isen_Pref, false);
-    isen = false;
-  }
+
   // await prefs.setBool(firstTime_pref, true);
 
   bool isFirstRun = prefs.getBool(firstTime_pref) ?? true;
@@ -52,16 +46,12 @@ void main() async {
   //storage
   await const Storage().makeBaseDirectory();
 
-  runApp(MainApp(isdark: isdark, isEn: isen, isFirstRun: isFirstRun));
+  runApp(MainApp(isdark: isdark, isFirstRun: isFirstRun));
 }
 
 class MainApp extends StatefulWidget {
-  MainApp(
-      {super.key,
-      required this.isdark,
-      required this.isEn,
-      required this.isFirstRun});
-  final bool isdark, isEn, isFirstRun;
+  MainApp({super.key, required this.isdark, required this.isFirstRun});
+  final bool isdark, isFirstRun;
 
   @override
   State<MainApp> createState() => _MainAppState();
@@ -69,11 +59,9 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   late ThemeMode theme;
-  late Locale local;
   late bool first;
   @override
   void initState() {
-    local = widget.isEn ? Locale("en") : Locale("ar");
     theme = widget.isdark ? ThemeMode.dark : ThemeMode.light;
     first = widget.isFirstRun;
     super.initState();
@@ -85,26 +73,25 @@ class _MainAppState extends State<MainApp> {
       providers: [
         BlocProvider(create: (context) => SearchStorageCubit()),
         BlocProvider(create: (context) => SearchApiCubit()),
-        BlocProvider(create: (context) => ThemeCubit(theme, local)),
+        BlocProvider(create: (context) => ThemeCubit(theme)),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           if (state is ChangeTheme) {
             theme = state.theme;
           }
-          if (state is ChangeLocale) {
-            local = state.locale;
-          }
+
           if (state is IsFirstRun) {
             first = state.isFirstRun;
           }
 
           return EasyLocalization(
+              saveLocale: true,
               assetLoader: CodegenLoader(),
-              startLocale: local,
+              startLocale: Locale("en"),
               supportedLocales: [Locale("en"), Locale("ar")],
               path: "translations",
-              child: App(theme: theme, locale: local, isFirstRun: first));
+              child: App(theme: theme, isFirstRun: first));
         },
       ),
     );
@@ -112,21 +99,16 @@ class _MainAppState extends State<MainApp> {
 }
 
 class App extends StatelessWidget {
-  App(
-      {super.key,
-      required this.theme,
-      required this.locale,
-      required this.isFirstRun});
+  App({super.key, required this.theme, required this.isFirstRun});
 
   final ThemeMode theme;
-  final Locale locale;
   final bool isFirstRun;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
-        locale: locale,
+        locale: context.locale,
         themeMode: theme,
         theme: ThemeData(scaffoldBackgroundColor: MyColors.myWhite),
         darkTheme: ThemeData(scaffoldBackgroundColor: MyColors.myGrey),

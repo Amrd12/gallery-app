@@ -5,21 +5,14 @@ sealed class ThemeState {}
 
 final class ThemeInitial extends ThemeState {
   final ThemeMode th;
-  final Locale lo;
 
-  ThemeInitial({required this.th, required this.lo});
+  ThemeInitial({required this.th});
 }
 
 final class ChangeTheme extends ThemeState {
   final ThemeMode theme;
 
   ChangeTheme({required this.theme});
-}
-
-final class ChangeLocale extends ThemeState {
-  final Locale locale;
-
-  ChangeLocale({required this.locale});
 }
 
 final class IsFirstRun extends ThemeState {
