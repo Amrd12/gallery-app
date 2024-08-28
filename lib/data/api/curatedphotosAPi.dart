@@ -13,4 +13,5 @@ class Curatedphotosapi extends Api {
   ///request page from api [Api]
   Future<Map<String, dynamic>> get photospage =>
       get(CuratedPhotos, queryParameters: _pagequerry);
+      
 }
