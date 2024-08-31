@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:hive_flutter/hive_flutter.dart';
 
-part 'Search_Model.g.dart';
+part 'search_model.g.dart';
 
 @HiveType(typeId: 1)
 class SearchModel extends HiveObject {

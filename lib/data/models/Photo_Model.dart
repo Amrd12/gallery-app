@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
 import 'package:hive/hive.dart';
-part 'Photo_Model.g.dart';
+
+part "photo_model.g.dart";
 
 @HiveType(typeId: 0)
 class PhotoModel extends HiveObject {
@@ -14,30 +16,27 @@ class PhotoModel extends HiveObject {
   @HiveField(3)
   final Map<String, String> src;
   @HiveField(4)
-  final String photographer_name;
+  final String photographerName;
   @HiveField(5)
-  final String photographer_url;
+  final String photographerUrl;
   @HiveField(6)
-  final int photographer_id;
+  final int photographerId;
   @HiveField(7)
-  final String avg_color;
+  final String avgColor;
   @HiveField(8)
   final String alt;
   @HiveField(9)
   bool isdownloaded;
-  @HiveField(10)
-  bool Like;
   PhotoModel({
     required this.id,
     required this.width,
     required this.height,
     required this.src,
-    required this.photographer_name,
-    required this.photographer_url,
-    required this.photographer_id,
-    required this.avg_color,
+    required this.photographerName,
+    required this.photographerUrl,
+    required this.photographerId,
+    required this.avgColor,
     required this.alt,
-    this.Like = false,
     this.isdownloaded = false,
   });
 
@@ -47,13 +46,12 @@ class PhotoModel extends HiveObject {
       'width': width,
       'height': height,
       'src': src,
-      'photographer_name': photographer_name,
-      'photographer_url': photographer_url,
-      'photographer_id': photographer_id,
-      'avg_color': avg_color,
+      'photographer_name': photographerName,
+      'photographer_url': photographerUrl,
+      'photographer_id': photographerId,
+      'avg_color': avgColor,
       'alt': alt,
       'isdownloaded': isdownloaded,
-      "like": Like
     };
   }
 
@@ -63,13 +61,12 @@ class PhotoModel extends HiveObject {
       width: double.parse(map['width'].toString()),
       height: double.parse(map['height'].toString()),
       src: Map<String, String>.from((map['src'] as Map<String, String>)),
-      photographer_name: map['photographer'] as String,
-      photographer_url: map['photographer_url'] as String,
-      photographer_id: map['photographer_id'] as int,
-      avg_color: map['avg_color'] as String,
+      photographerName: map['photographer'] as String,
+      photographerUrl: map['photographer_url'] as String,
+      photographerId: map['photographer_id'] as int,
+      avgColor: map['avg_color'] as String,
       alt: map['alt'] as String,
       isdownloaded: map['isdownloaded'] as bool,
-      Like: map['Like'] as bool,
     );
   }
 

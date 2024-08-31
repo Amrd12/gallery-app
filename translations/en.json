@@ -8,5 +8,7 @@
     "Language_en":"english",
     "empty":"Empty, please Add some Photoss",
     "welcome":"welcome",
+    "restore" :"restore",
+    "save":"save",
     "next" : "next"
 }

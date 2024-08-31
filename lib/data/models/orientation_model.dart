@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class OrientationModel {
   ValueNotifier<int> item = ValueNotifier<int>(0);
   final List<String> _orientationList = ["", "landscape", "portrait", "square"];
-  //TODO: sperate ui from model
   final _orientationIcons = {
     "": const Icon(Icons.not_interested),
     "landscape": const Icon(Icons.landscape),

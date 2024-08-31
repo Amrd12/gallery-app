@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Search_Model.dart';
+part of 'search_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator

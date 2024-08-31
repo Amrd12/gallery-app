@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gallaryapp/constans/colors.dart';
-import 'package:gallaryapp/constans/strings.dart';
+import '../constans/colors.dart';
+import '../constans/strings.dart';
 
 enum NavigationItem {
   home(
     0,
-    homeRoute,
+    Routes.homeRoute,
     Icons.home_outlined,
     Icons.home,
     MyColors.myGrey,
@@ -13,7 +13,7 @@ enum NavigationItem {
   ),
   explore(
     1,
-    exploreRoute,
+    Routes.exploreRoute,
     Icons.explore_outlined,
     Icons.explore,
     MyColors.myGrey,
@@ -21,7 +21,7 @@ enum NavigationItem {
   ),
   settings(
     2,
-    layoutRoute,
+    Routes.layoutRoute,
     Icons.settings_outlined,
     Icons.settings,
     MyColors.myGrey,

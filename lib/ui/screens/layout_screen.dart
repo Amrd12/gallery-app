@@ -1,14 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:gallaryapp/ui/screens/Explore.dart';
-import 'package:gallaryapp/ui/screens/Home.dart';
-import 'package:gallaryapp/ui/screens/theme-page.dart';
 
 import '../../constans/colors.dart';
-import '../Navigation_Item.dart';
+import 'explorer_screen/view/explore.dart';
+import 'home_screen/view/home.dart';
+import 'settings_screen/view/setting_screen.dart';
 
 class LayoutScreen extends StatefulWidget {
-  LayoutScreen({super.key});
+  const LayoutScreen({super.key});
   @override
   State<LayoutScreen> createState() => _LayoutScreenState();
 }
@@ -24,7 +23,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-          index: index, children: [HomeScreen(), Explore(), ThemePage()]),
+          index: index,
+          children: const [HomeScreen(), Explore(), SettingScreen()]),
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: MyColors.myYellow,
           unselectedItemColor: MyColors.myWhite,
@@ -33,16 +33,16 @@ class _LayoutScreenState extends State<LayoutScreen> {
           onTap: _onDestinationSelected,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                activeIcon: Icon(Icons.home),
+                icon: const Icon(Icons.home_outlined),
+                activeIcon: const Icon(Icons.home),
                 label: context.tr("home")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.explore_outlined),
-                activeIcon: Icon(Icons.explore),
+                icon: const Icon(Icons.explore_outlined),
+                activeIcon: const Icon(Icons.explore),
                 label: context.tr("explore")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings_outlined),
-                activeIcon: Icon(Icons.settings),
+                icon: const Icon(Icons.settings_outlined),
+                activeIcon: const Icon(Icons.settings),
                 label: context.tr("settings")),
           ]),
     );

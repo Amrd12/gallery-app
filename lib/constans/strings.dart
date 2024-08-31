@@ -1,22 +1,34 @@
 // api
-const baseurl = "https://api.pexels.com/v1/";
-const CuratedPhotos = "curated";
-const Search = "search";
+class ApiEndpoint {
+  static const baseUrl = "https://api.pexels.com/v1/";
+  static const curatedPhotos = "curated";
+  static const search = "search";
+}
+
 // Storage
-const dirTryFolder = "/storage/emulated/0/";
-const dirFolder =
-    "/storage/emulated/0/Android/data/com.example.gallaryapp/files/";
-const folderName = 'gallaryapp';
+class StoragePath {
+  static const dirTryFolder = "/storage/emulated/0/";
+  static const dirFolder =
+      "/storage/emulated/0/Android/data/com.example.gallaryapp/files/";
+  static const folderName = 'gallaryapp';
+}
+
 // routs
-const navigationRoute = "/";
-const homeRoute = "/home";
-const exploreRoute = "/explore";
-const layoutRoute = "/layout";
+class Routes {
+  static const navigationRoute = "/";
+  static const homeRoute = "/home";
+  static const exploreRoute = "/explore";
+  static const layoutRoute = "/layout";
+}
+
 //hive
-const hivebox = "PhotosBox";
-const searchBox = "searchbox";
+class HiveBoxNames {
+  static const hiveBox = "PhotosBox";
+  static const searchBox = "searchbox";
+}
 
 //prefrence
-const isdark_Pref = "isdark";
-const isen_Pref = "isdark";
-const firstTime_pref = "firsttime";
+class PrefNames {
+  static const isdarkPref = "isdark";
+  static const firstTimePref = "firsttime";
+}

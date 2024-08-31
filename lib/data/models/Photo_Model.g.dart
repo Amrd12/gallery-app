@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Photo_Model.dart';
+part of 'photo_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -21,12 +21,11 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
       width: fields[1] as double,
       height: fields[2] as double,
       src: (fields[3] as Map).cast<String, String>(),
-      photographer_name: fields[4] as String,
-      photographer_url: fields[5] as String,
-      photographer_id: fields[6] as int,
-      avg_color: fields[7] as String,
+      photographerName: fields[4] as String,
+      photographerUrl: fields[5] as String,
+      photographerId: fields[6] as int,
+      avgColor: fields[7] as String,
       alt: fields[8] as String,
-      Like: fields[10] as bool,
       isdownloaded: fields[9] as bool,
     );
   }
@@ -44,19 +43,17 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
       ..writeByte(3)
       ..write(obj.src)
       ..writeByte(4)
-      ..write(obj.photographer_name)
+      ..write(obj.photographerName)
       ..writeByte(5)
-      ..write(obj.photographer_url)
+      ..write(obj.photographerUrl)
       ..writeByte(6)
-      ..write(obj.photographer_id)
+      ..write(obj.photographerId)
       ..writeByte(7)
-      ..write(obj.avg_color)
+      ..write(obj.avgColor)
       ..writeByte(8)
       ..write(obj.alt)
       ..writeByte(9)
-      ..write(obj.isdownloaded)
-      ..writeByte(10)
-      ..write(obj.Like);
+      ..write(obj.isdownloaded);
   }
 
   @override

@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
-import 'package:gallaryapp/constans/api_key.dart';
-import '../../Storage/Storage.dart';
-import '../../constans/strings.dart';
-import '../models/Photo_Model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../services/Storage/Storage.dart';
+import '../../constans/api_key.dart';
+import '../../constans/strings.dart';
+import '../models/photo_model.dart';
 
 class Api {
   late Dio dio;
@@ -11,9 +14,9 @@ class Api {
   Api() {
     BaseOptions options = BaseOptions(
       headers: {
-        'Authorization': ApiKey,
+        'Authorization': apiKey,
       },
-      baseUrl: baseurl,
+      baseUrl: ApiEndpoint.baseUrl,
       receiveDataWhenStatusError: true,
       followRedirects: false,
     );
@@ -25,11 +28,11 @@ class Api {
       {Map<String, dynamic>? queryParameters}) async {
     try {
       Response res = await dio.get(url, queryParameters: queryParameters);
-      print(res.statusCode);
+      log("states code: ${res.statusCode}");
       // print(res.data.toString());
       return res.data;
     } catch (e) {
-      print('Error occurred: $e');
+      log('Error occurred: $e');
       return {};
     }
   }
@@ -41,7 +44,7 @@ class Api {
       await dio
           .download(url!, "$dic/${photo.id}.jpg", onReceiveProgress: onreceve)
           .then((_) {
-        final box = Hive.box<PhotoModel>(hivebox);
+        final box = Hive.box<PhotoModel>(HiveBoxNames.hiveBox);
 
         if (!storage.isSaved(photo.id)) {
           if (!photo.isInBox) box.add(photo);
