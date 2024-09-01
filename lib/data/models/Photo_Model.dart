@@ -26,7 +26,7 @@ class PhotoModel extends HiveObject {
   @HiveField(8)
   final String alt;
   @HiveField(9)
-  bool isdownloaded;
+  bool isDownloaded;
   PhotoModel({
     required this.id,
     required this.width,
@@ -37,7 +37,7 @@ class PhotoModel extends HiveObject {
     required this.photographerId,
     required this.avgColor,
     required this.alt,
-    this.isdownloaded = false,
+    this.isDownloaded = false,
   });
 
   Map<String, dynamic> toMap() {
@@ -51,7 +51,7 @@ class PhotoModel extends HiveObject {
       'photographer_id': photographerId,
       'avg_color': avgColor,
       'alt': alt,
-      'isdownloaded': isdownloaded,
+      'isDownloaded': isDownloaded,
     };
   }
 
@@ -66,7 +66,7 @@ class PhotoModel extends HiveObject {
       photographerId: map['photographer_id'] as int,
       avgColor: map['avg_color'] as String,
       alt: map['alt'] as String,
-      isdownloaded: map['isdownloaded'] as bool,
+      isDownloaded: map['isDownloaded'] as bool,
     );
   }
 

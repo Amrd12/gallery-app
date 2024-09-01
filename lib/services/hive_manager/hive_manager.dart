@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:hive/hive.dart';
 
 abstract class HiveManager<T> {

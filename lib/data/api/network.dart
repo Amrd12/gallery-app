@@ -1,8 +1,6 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-
 import '../../services/Storage/Storage.dart';
 import '../../constans/api_key.dart';
 import '../../constans/strings.dart';
@@ -37,21 +35,13 @@ class Api {
     }
   }
 
-  saveimg(PhotoModel photo, {void Function(int, int)? onreceve}) async {
-    final url = photo.src["original"];
+  Future<void> saveimg(PhotoModel photo,
+      {void Function(int, int)? onreceve}) async {
+    final url = photo.src.values.last;
     final dic = storage.getBaseDirectory();
-    if (!storage.isdownloaded(photo.id.toString())) {
-      await dio
-          .download(url!, "$dic/${photo.id}.jpg", onReceiveProgress: onreceve)
-          .then((_) {
-        final box = Hive.box<PhotoModel>(HiveBoxNames.hiveBox);
-
-        if (!storage.isSaved(photo.id)) {
-          if (!photo.isInBox) box.add(photo);
-        }
-        photo.isdownloaded = true;
-        photo.save();
-      });
+    if (!storage.isDownloaded(photo.id.toString())) {
+      await dio.download(url, "$dic/${photo.id}.jpg",
+          onReceiveProgress: onreceve);
     }
   }
 }

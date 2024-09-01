@@ -1,13 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gallaryapp/locator.dart';
+import 'package:gallaryapp/services/photo_handeller/photo_handeller.dart';
 import 'package:gallaryapp/ui/screens/home_screen/cubit/photo_storage_cubit.dart';
 import '../../../services/Storage/Storage.dart';
-import '../../../constans/strings.dart';
-import '../../../data/api/network.dart';
 import '../../../data/models/photo_model.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class CustomIcons extends StatefulWidget {
   const CustomIcons({
@@ -28,74 +25,58 @@ class _CustomIconsState extends State<CustomIcons> {
   Color get avColor =>
       Color(int.parse('FF${widget.photo.avgColor.substring(1)}', radix: 16));
 
-  _startDownload(BuildContext context) async {
-    if (widget.photo.isdownloaded) {
-      _downloaded(context);
+  final PhotoHandeller _photoHandeller = locator.get<PhotoHandeller>();
+
+  _download(BuildContext context) async {
+    if (!widget.photo.isInBox) {
+      _fav();
+    }
+    if (widget.photo.isDownloaded) {
+      _deletePhoto(context);
     } else {
-      _notdownloaded();
+      _startDownload();
     }
   }
 
-  void _notdownloaded() {
+  void _startDownload() async {
     setState(() {
       downloading = true;
       progress = 0.0;
     });
-    Api().saveimg(widget.photo, onreceve: _updateProgress).then((_) {
-      setState(() {
-        downloading = false;
-      });
+
+    await _photoHandeller.downloadPhoto(
+      widget.photo,
+      onProgress: (p0, p1) => _updateProgress(p0, p1),
+      onDownloadCompleted: (p0) => _showSnackBar("Downloaded Success"),
+      onDownloadError: (p0) => _showSnackBar("Downloaded Error : $p0"),
+    );
+
+    setState(() {
+      downloading = false;
+      progress = 0.0;
     });
-    return;
   }
 
-  void _downloaded(BuildContext context) {
+  void _deletePhoto(BuildContext context) {
     setState(() {
       downloading = false;
     });
     storage.deleteimg(widget.photo);
-    final ModalRoute? currentRoute = ModalRoute.of(context);
-    if (currentRoute != null) {
-      final RouteSettings settings = currentRoute.settings;
-      if (settings.name == Routes.homeRoute) {
-        context.read<PhotoStorageCubit>().getPhotosPage();
-      }
-    }
+
     setState(() {});
 
     return;
   }
 
-  void _updateProgress(int start, int end) {
-    setState(() {
-      progress = (start / end).clamp(0, 1);
-    });
+  void _fav() {
+    BlocProvider.of<PhotoStorageCubit>(context).addPhoto(widget.photo);
+    _photoHandeller.likePhoto(widget.photo);
+    setState(() {});
   }
-
-  // void _fav(BuildContext context) {
-  //   final box = Hive.box<PhotoModel>(HiveBoxNames.hiveBox);
-  //   widget.photo.like = !widget.photo.like;
-  //   if (widget.photo.like && storage.isSaved(widget.photo.id)) {
-  //     if (!widget.photo.isInBox) box.add(widget.photo);
-  //     widget.photo.save();
-  //   } else if (!widget.photo.like && !widget.photo.isdownloaded) {
-  //     widget.photo.delete();
-  //     final ModalRoute? currentRoute = ModalRoute.of(context);
-  //     if (currentRoute != null) {
-  //       final RouteSettings settings = currentRoute.settings;
-  //       if (settings.name == Routes.homeRoute) {
-  //         context.read<PhotoStorageCubit>().getPhotosPage();
-  //       }
-  //     } else {
-  //       log('No current route found.');
-  //     }
-  //   }
-  //   setState(() {});
-  // }
 
   @override
   Widget build(BuildContext context) {
-    var downloadedIcon = widget.photo.isdownloaded
+    var downloadedIcon = widget.photo.isDownloaded
         ? const Icon(Icons.download_done, size: 40, color: Colors.white)
         : const Icon(Icons.download, size: 40, color: Colors.white);
 
@@ -109,25 +90,32 @@ class _CustomIconsState extends State<CustomIcons> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Visibility(
-            visible: !downloading,
-            replacement: Center(
-              heightFactor: 40,
-              child: CircularProgressIndicator(
-                  value: progress, color: Colors.white),
-            ),
-            child: IconButton(
-              onPressed: () => _startDownload(context),
-              icon: downloadedIcon,
-            ),
-          ),
+          downloading
+              ? CircularProgressIndicator(value: progress, color: Colors.white)
+              : IconButton(
+                  onPressed: () => _download(context),
+                  icon: downloadedIcon,
+                ),
           const SizedBox(width: 10),
           IconButton(
-            onPressed: () {},
+            onPressed: () => _fav(),
             icon: likedIcon,
           ),
         ],
       ),
     );
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: avColor,
+    ));
+  }
+
+  void _updateProgress(int start, int end) {
+    setState(() {
+      progress = (start / end).clamp(0, 1);
+    });
   }
 }

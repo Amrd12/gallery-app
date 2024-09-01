@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallaryapp/locator.dart';
 import 'package:gallaryapp/services/shared_pref/shared_pref.dart';
 import 'package:gallaryapp/ui/screens/explorer_screen/cubit/search_api_cubit.dart';
+import 'package:gallaryapp/ui/screens/home_screen/cubit/photo_storage_cubit.dart';
 import 'package:gallaryapp/ui/screens/home_screen/cubit/search_storage_cubit.dart';
 import "package:hive_flutter/hive_flutter.dart";
 import 'services/Storage/Storage.dart';
@@ -13,7 +12,6 @@ import 'constans/colors.dart';
 import 'constans/strings.dart';
 import 'data/models/photo_model.dart';
 import 'data/models/search_model.dart';
-import 'package:gallaryapp/generated/lib/codegen_loader.g.dart';
 import 'ui/screens/layout_screen.dart';
 import 'ui/screens/settings_screen/cubit/theme_cubit.dart';
 import 'ui/screens/settings_screen/view/setting_screen.dart';
@@ -36,7 +34,7 @@ void main() async {
   //storage
   await const Storage().makeBaseDirectory();
 
-  runApp(MainApp());
+  runApp(const MainApp());
 }
 
 class MainApp extends StatefulWidget {
@@ -65,6 +63,9 @@ class _MainAppState extends State<MainApp> {
         BlocProvider(create: (context) => SearchStorageCubit()),
         BlocProvider(create: (context) => SearchApiCubit()),
         BlocProvider(create: (context) => ThemeCubit(theme)),
+        BlocProvider(
+          create: (context) => PhotoStorageCubit(),
+        ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {

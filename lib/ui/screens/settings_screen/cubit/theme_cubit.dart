@@ -3,9 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:gallaryapp/locator.dart';
 import 'package:gallaryapp/services/shared_pref/shared_pref.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../../constans/strings.dart';
 
 part 'theme_state.dart';
 

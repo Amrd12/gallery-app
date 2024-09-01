@@ -26,14 +26,14 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
       photographerId: fields[6] as int,
       avgColor: fields[7] as String,
       alt: fields[8] as String,
-      isdownloaded: fields[9] as bool,
+      isDownloaded: fields[9] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, PhotoModel obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -53,7 +53,7 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
       ..writeByte(8)
       ..write(obj.alt)
       ..writeByte(9)
-      ..write(obj.isdownloaded);
+      ..write(obj.isDownloaded);
   }
 
   @override

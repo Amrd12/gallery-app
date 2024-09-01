@@ -1,8 +1,5 @@
-
-
+import 'dart:developer';
 import 'dart:io';
-
-import 'package:hive/hive.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
@@ -14,7 +11,7 @@ class Storage {
   Future<void> makeBaseDirectory() async {
     Directory? baseDir;
     if (Platform.isAndroid) {
-      baseDir = await getExternalStorageDirectory();
+      baseDir = await getDownloadsDirectory();
     } else {
       baseDir = Directory.current;
     }
@@ -43,17 +40,11 @@ class Storage {
     } else {
       baseDir = Directory.current;
     }
-
+    log("Base Dir:  ${baseDir.path}");
     return baseDir.path;
   }
 
-  List<PhotoModel> get savedimg =>
-      Hive.box<PhotoModel>(HiveBoxNames.hiveBox).values.toList();
-
-  bool isSaved(int id) => savedimg.where((text) => text.id == id).isEmpty;
-
-
-  bool isdownloaded(String id) {
+  bool isDownloaded(String id) {
     final dic = getBaseDirectory();
     File img = File("$dic/$id.jpg");
     return img.existsSync();
@@ -69,7 +60,7 @@ class Storage {
     final dic = getBaseDirectory();
     File img = File("$dic/${photo.id}.jpg");
     img.deleteSync();
-    photo.isdownloaded = false;
+    photo.isDownloaded = false;
     if (photo.isInBox && photo.isInBox == false) photo.delete();
   }
 }

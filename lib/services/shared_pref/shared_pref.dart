@@ -20,12 +20,12 @@ class SharedPref {
   }
 
   Future<void> _setupIsdark(SharedPreferences prefs) async {
-    bool? _isDark = prefs.getBool(PrefNames.isdarkPref);
-    log("isdark $_isDark");
-    if (_isDark == null) {
+    bool? isDark = prefs.getBool(PrefNames.isdarkPref);
+    log("isdark $isDark");
+    if (isDark == null) {
       await prefs.setBool(PrefNames.isdarkPref, true);
-      _isDark = false;
+      isDark = false;
     }
-    isDark = _isDark;
+    this.isDark = isDark;
   }
 }

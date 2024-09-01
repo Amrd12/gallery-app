@@ -8,8 +8,7 @@ class ApiEndpoint {
 // Storage
 class StoragePath {
   static const dirTryFolder = "/storage/emulated/0/";
-  static const dirFolder =
-      "/storage/emulated/0/Android/data/com.example.gallaryapp/files/";
+  static const dirFolder = "/storage/emulated/0/Download/";
   static const folderName = 'gallaryapp';
 }
 

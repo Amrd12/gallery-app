@@ -6,8 +6,12 @@ import '../models/photo_model.dart';
 
 class PhotosRepo {
   final Curatedphotosapi _curatedphotosapi = locator.get<Curatedphotosapi>();
+
   final Storage _storage = locator.get<Storage>();
+
   void nextpage() => _curatedphotosapi.nextpage();
+
+
   Future<List<PhotoModel>> photspage() async {
     final json = await _curatedphotosapi.photospage;
     return photosMap(json);
@@ -17,14 +21,13 @@ class PhotosRepo {
     List<PhotoModel> photos = List<PhotoModel>.from(
       (js["photos"] as List).map(_photoObj),
     );
-    // Using Future.wait to handle asynchronous operations
     photos = photos.map((PhotoModel item) {
-      item.isdownloaded = _storage.isdownloaded(item.id.toString());
+      item.isDownloaded = _storage.isDownloaded(item.id.toString());
       return item;
     }).toList();
 
     return photos;
-  }
+  } 
 
   _photoObj(item) {
     Map<String, dynamic> srcDynamicMap = item["src"] as Map<String, dynamic>;
@@ -32,7 +35,7 @@ class PhotosRepo {
         srcDynamicMap.map((key, value) => MapEntry(key, value.toString()));
 
     item["src"] = srcStringMap;
-    item["isdownloaded"] = false;
+    item["isDownloaded"] = false;
     return PhotoModel.fromMap(item);
   }
 }
