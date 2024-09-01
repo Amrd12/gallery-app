@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gallaryapp/constans/colors.dart';
 import 'package:gallaryapp/locator.dart';
+import 'package:gallaryapp/services/backup/bakeup.dart';
 import 'package:gallaryapp/services/shared_pref/shared_pref.dart';
 import '../cubit/theme_cubit.dart';
 import '../../../main_widgets/app_bar/Custom_App_Bar.dart';
@@ -16,6 +18,7 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   late ThemeMode theme = _sharedPref.isDark ? ThemeMode.dark : ThemeMode.light;
   final SharedPref _sharedPref = locator.get<SharedPref>();
+  final Backup _backup = locator.get<Backup>();
   @override
   Widget build(BuildContext context) {
     final wid = MediaQuery.of(context).size.height;
@@ -66,9 +69,17 @@ class _SettingScreenState extends State<SettingScreen> {
                     )
                   ],
                 ),
-                ElevatedButton(onPressed: () {}, child: Text("restore".tr())),
+                ElevatedButton(
+                    onPressed: () => _backup.restore(
+                        onCancel: () => _showSnackBar("restore Canceled"),
+                        onCompelete: () => _showSnackBar("restore Compelete")),
+                    child: Text("restore".tr())),
                 if (!_sharedPref.isFirstRun)
-                  ElevatedButton(onPressed: () {}, child: Text("save".tr())),
+                  ElevatedButton(
+                      onPressed: () => _backup.saveFile(
+                          onCancel: () => _showSnackBar("Save Canceled"),
+                          onCompelete: () => _showSnackBar("Save Compelete")),
+                      child: Text("save".tr())),
                 if (_sharedPref.isFirstRun)
                   ElevatedButton(
                       onPressed: () =>
@@ -77,9 +88,15 @@ class _SettingScreenState extends State<SettingScreen> {
               ],
             ),
           );
-          
         },
       ),
     );
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: MyColors.myYellow.withOpacity(.8),
+    ));
   }
 }

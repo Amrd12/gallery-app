@@ -1,4 +1,5 @@
 import 'package:gallaryapp/locator.dart';
+import 'package:gallaryapp/services/hive_manager/photo_hive_manager.dart';
 import 'package:gallaryapp/services/storage/storage.dart';
 
 import '../api/curated_photos_api.dart';
@@ -9,8 +10,9 @@ class PhotosRepo {
 
   final Storage _storage = locator.get<Storage>();
 
-  void nextpage() => _curatedphotosapi.nextpage();
+  final PhotoHiveManager _manager = locator.get<PhotoHiveManager>();
 
+  void nextpage() => _curatedphotosapi.nextpage();
 
   Future<List<PhotoModel>> photspage() async {
     final json = await _curatedphotosapi.photospage;
@@ -18,16 +20,13 @@ class PhotosRepo {
   }
 
   List<PhotoModel> photosMap(Map<String, dynamic> js) {
-    List<PhotoModel> photos = List<PhotoModel>.from(
-      (js["photos"] as List).map(_photoObj),
-    );
-    photos = photos.map((PhotoModel item) {
-      item.isDownloaded = _storage.isDownloaded(item.id.toString());
-      return item;
-    }).toList();
-
-    return photos;
-  } 
+  return (js["photos"] as List).map<PhotoModel>((dynamic item) {
+    PhotoModel photo = _photoObj(item);
+    photo = _manager.getIfSaved(photo) ?? photo;
+    photo.isDownloaded = _storage.isDownloaded(photo.id.toString());
+    return photo;
+  }).toList();
+} 
 
   _photoObj(item) {
     Map<String, dynamic> srcDynamicMap = item["src"] as Map<String, dynamic>;
@@ -38,4 +37,5 @@ class PhotosRepo {
     item["isDownloaded"] = false;
     return PhotoModel.fromMap(item);
   }
+
 }

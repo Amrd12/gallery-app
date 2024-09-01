@@ -66,7 +66,7 @@ class PhotoModel extends HiveObject {
       photographerId: map['photographer_id'] as int,
       avgColor: map['avg_color'] as String,
       alt: map['alt'] as String,
-      isDownloaded: map['isDownloaded'] as bool,
+      isDownloaded: map['isDownloaded'] as bool? ?? false,
     );
   }
 

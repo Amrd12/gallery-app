@@ -5,5 +5,4 @@ import 'package:gallaryapp/services/hive_manager/hive_manager.dart';
 class PhotoHiveManager extends HiveManager<PhotoModel> {
   @override
   String get boxName => HiveBoxNames.hiveBox;
-  PhotoHiveManager() : super();
 }

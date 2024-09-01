@@ -3,9 +3,10 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallaryapp/data/models/photo_model.dart';
 import 'package:gallaryapp/data/repo/photos_repo.dart';
+import 'package:gallaryapp/locator.dart';
 
 class PhotoApiCubit extends Cubit<PhotoApiState> {
-  final PhotosRepo repo = PhotosRepo();
+  final PhotosRepo repo = locator.get<PhotosRepo>();
 
   List<PhotoModel> photos = [];
 

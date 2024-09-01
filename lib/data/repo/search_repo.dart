@@ -8,13 +8,14 @@ import '../api/search_api.dart';
 import '../models/search_model.dart';
 import 'photos_repo.dart';
 
-class Searchrepo {
+class SearchRepo {
   final SearchApi _searchApi = locator.get<SearchApi>();
 
-  PhotosRepo photosrepo = PhotosRepo();
+  PhotosRepo photosrepo = locator.get<PhotosRepo>();
 
-  List<SearchModel> get search =>
-      Hive.box<SearchModel>(HiveBoxNames.searchBox).values.toList();
+  List<SearchModel> pareseSearch(List<Map<String, dynamic>> data) {
+    return data.map((map) => SearchModel.fromMap(map)).toList();
+  }
 
   Future<List<PhotoModel>> getSearchpage(String query, String type) async {
     if (query == "") return [];

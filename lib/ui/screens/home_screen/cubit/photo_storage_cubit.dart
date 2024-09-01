@@ -27,9 +27,17 @@ class PhotoStorageCubit extends Cubit<PhotoStorageState> {
   }
 
   void addPhoto(PhotoModel model) {
-    (model.isInBox && !photos.contains(model))
-        ? photos.add(model)
-        : photos.removeWhere((test) => test == model);
+    if (model.isInBox) {
+      if (photos.contains(model)) {
+        log("Photo removed ${model.alt}");
+        photos.removeWhere((test) => test == model);
+      }
+    } else {
+      if (!photos.contains(model)) {
+        log("Photo Added ${model.alt}");
+        photos.add(model);
+      }
+    }
     emit(PhotoStorageLoaded(photos));
   }
 }

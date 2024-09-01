@@ -30,7 +30,8 @@ class PhotoHandeller {
       void Function(String)? onDownloadError}) async {
     await requestPermission();
     if (model.isInBox == false) await _manager.addToBox(model);
-    _api.saveimg(model, onreceve: onProgress);
+    await _api.saveimg(model, onreceve: onProgress);
+
     model.isDownloaded = true;
     model.save();
     onDownloadCompleted!(model.id.toString());

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallaryapp/locator.dart';
@@ -52,6 +54,7 @@ class _CustomIconsState extends State<CustomIcons> {
     );
 
     setState(() {
+      log("Download completed _start");
       downloading = false;
       progress = 0.0;
     });
@@ -64,12 +67,13 @@ class _CustomIconsState extends State<CustomIcons> {
     storage.deleteimg(widget.photo);
 
     setState(() {});
-
-    return;
   }
 
   void _fav() {
+    //true
+    //add or remove form storage
     BlocProvider.of<PhotoStorageCubit>(context).addPhoto(widget.photo);
+    //add or remove from box
     _photoHandeller.likePhoto(widget.photo);
     setState(() {});
   }

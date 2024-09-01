@@ -61,6 +61,11 @@ class Storage {
     File img = File("$dic/${photo.id}.jpg");
     img.deleteSync();
     photo.isDownloaded = false;
-    if (photo.isInBox && photo.isInBox == false) photo.delete();
+    photo.save();
+  }
+
+  Future<void> saveDataToFile(String filePath, String data) async {
+    final file = File(filePath);
+    await file.writeAsString(data);
   }
 }
