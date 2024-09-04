@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallaryapp/locator.dart';
@@ -49,7 +50,7 @@ class _CustomIconsState extends State<CustomIcons> {
     await _photoHandeller.downloadPhoto(
       widget.photo,
       onProgress: (p0, p1) => _updateProgress(p0, p1),
-      onDownloadCompleted: (p0) => _showSnackBar("Downloaded Success"),
+      onDownloadCompleted: (p0) => _showSnackBar("downloadSuccess".tr()),
       onDownloadError: (p0) => _showSnackBar("Downloaded Error : $p0"),
     );
 

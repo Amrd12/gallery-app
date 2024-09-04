@@ -10,5 +10,9 @@
     "welcome": "مرحيا بك",
     "restore" :"استعاده نسخه",
     "save":"حفظ نسخه",
-    "next" : "التالى"
+    "next" : "التالى",
+    "downloadSuccess" :" تم التحميل بنجاح",
+    "RestoreSuccess" :"تم استعاده البيانات بنجاح",
+    "SaveSuccess" :"تم الحفظ بنجاح",
+    "canceled":"تم الالغاء"
 }

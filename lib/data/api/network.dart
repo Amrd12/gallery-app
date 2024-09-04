@@ -37,7 +37,7 @@ class Api {
 
   Future<void> saveimg(PhotoModel photo,
       {void Function(int, int)? onreceve}) async {
-    final url = photo.src.values.last;
+    final url = photo.src["original"]!;
     final dic = storage.getBaseDirectory();
     if (!storage.isDownloaded(photo.id.toString())) {
       await dio.download(url, "$dic/${photo.id}.jpg",

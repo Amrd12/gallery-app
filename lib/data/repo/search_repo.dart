@@ -13,7 +13,7 @@ class SearchRepo {
 
   PhotosRepo photosrepo = locator.get<PhotosRepo>();
 
-  List<SearchModel> pareseSearch(List<Map<String, dynamic>> data) {
+  List<SearchModel> pareseSearch(List<dynamic> data) {
     return data.map((map) => SearchModel.fromMap(map)).toList();
   }
 
@@ -28,7 +28,7 @@ class SearchRepo {
     final box = Hive.box<SearchModel>(HiveBoxNames.searchBox);
     box.add(item);
     item.save();
-    return photosrepo.photosMap(data);
+    return photosrepo.photosMapMap(data);
   }
 
   void nextpage() => _searchApi.nextpage();

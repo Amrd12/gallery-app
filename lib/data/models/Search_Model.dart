@@ -55,7 +55,7 @@ class SearchModel extends HiveObject {
     );
   }
 
-  String toJson() => json.encode(toMap());
+  String toJson() => JsonEncoder.withIndent("    ").convert(toMap());
 
   factory SearchModel.fromJson(String source) =>
       SearchModel.fromMap(json.decode(source) as Map<String, dynamic>);

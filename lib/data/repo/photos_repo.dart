@@ -16,17 +16,25 @@ class PhotosRepo {
 
   Future<List<PhotoModel>> photspage() async {
     final json = await _curatedphotosapi.photospage;
-    return photosMap(json);
+    return photosMapMap(json);
   }
 
-  List<PhotoModel> photosMap(Map<String, dynamic> js) {
-  return (js["photos"] as List).map<PhotoModel>((dynamic item) {
-    PhotoModel photo = _photoObj(item);
-    photo = _manager.getIfSaved(photo) ?? photo;
-    photo.isDownloaded = _storage.isDownloaded(photo.id.toString());
-    return photo;
-  }).toList();
-} 
+  List<PhotoModel> photosMapMap(Map<String, dynamic> js) {
+    return (js["photos"] as List).map<PhotoModel>((dynamic item) {
+      PhotoModel photo = _photoObj(item);
+      photo = _manager.getIfSaved(photo) ?? photo;
+      photo.isDownloaded = _storage.isDownloaded(photo.id.toString());
+      return photo;
+    }).toList();
+  }
+
+  List<PhotoModel> photosMapList(List<dynamic> js) =>
+      js.map<PhotoModel>((dynamic item) {
+        PhotoModel photo = _photoObj(item);
+        photo = _manager.getIfSaved(photo) ?? photo;
+        photo.isDownloaded = _storage.isDownloaded(photo.id.toString());
+        return photo;
+      }).toList();
 
   _photoObj(item) {
     Map<String, dynamic> srcDynamicMap = item["src"] as Map<String, dynamic>;
@@ -37,5 +45,4 @@ class PhotosRepo {
     item["isDownloaded"] = false;
     return PhotoModel.fromMap(item);
   }
-
 }

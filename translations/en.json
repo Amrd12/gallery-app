@@ -10,5 +10,9 @@
     "welcome":"welcome",
     "restore" :"restore",
     "save":"save",
-    "next" : "next"
+    "next" : "next",
+    "downloadSuccess" :"download Success",
+    "RestoreSuccess" :"Restore Success",
+    "SaveSuccess" :"Save Success",
+    "canceled":"canceled"
 }

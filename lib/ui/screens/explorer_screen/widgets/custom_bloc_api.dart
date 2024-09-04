@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../constans/colors.dart';
 import '../../../../data/models/photo_model.dart';
 import '../../../main_widgets/Custom_Photo_List.dart';
-import '../cubit/photo_Api_cubit.dart';
+import '../cubit/photo_api_cubit.dart';
 
 class CustomBlocApi extends StatefulWidget {
   const CustomBlocApi({super.key});

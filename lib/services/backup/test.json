@@ -1,0 +1,81 @@
+{
+  "Photos": [
+    {
+      "id": 27945902,
+      "width": 2380,
+      "height": 3570,
+      "src": {
+        "original": "https://images.pexels.com/photos/27945902/pexels-photo-27945902.jpeg",
+        "large2x": "https://images.pexels.com/photos/27945902/pexels-photo-27945902.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "large": "https://images.pexels.com/photos/27945902/pexels-photo-27945902.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "medium": "https://images.pexels.com/photos/27945902/pexels-photo-27945902.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "small": "https://images.pexels.com/photos/27945902/pexels-photo-27945902.jpeg?auto=compress&cs=tinysrgb&h=130",
+        "portrait": "https://images.pexels.com/photos/27945902/pexels-photo-27945902.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
+        "landscape": "https://images.pexels.com/photos/27945902/pexels-photo-27945902.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+        "tiny": "https://images.pexels.com/photos/27945902/pexels-photo-27945902.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"
+      },
+      "photographer": "Dani",
+      "photographer_url": "https://www.pexels.com/@dani-1714092330",
+      "photographer_id": 1714092330,
+      "avg_color": "#4B4841",
+      "alt": "red witch 🧡",
+      "isDownloaded": false
+    },
+    {
+      "id": 27945905,
+      "width": 3693,
+      "height": 5540,
+      "src": {
+        "original": "https://images.pexels.com/photos/27945905/pexels-photo-27945905.jpeg",
+        "large2x": "https://images.pexels.com/photos/27945905/pexels-photo-27945905.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "large": "https://images.pexels.com/photos/27945905/pexels-photo-27945905.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "medium": "https://images.pexels.com/photos/27945905/pexels-photo-27945905.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "small": "https://images.pexels.com/photos/27945905/pexels-photo-27945905.jpeg?auto=compress&cs=tinysrgb&h=130",
+        "portrait": "https://images.pexels.com/photos/27945905/pexels-photo-27945905.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
+        "landscape": "https://images.pexels.com/photos/27945905/pexels-photo-27945905.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+        "tiny": "https://images.pexels.com/photos/27945905/pexels-photo-27945905.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"
+      },
+      "photographer": "Dani",
+      "photographer_url": "https://www.pexels.com/@dani-1714092330",
+      "photographer_id": 1714092330,
+      "avg_color": "#5B5C56",
+      "alt": "A woman with red hair and a white coat standing by a wall",
+      "isDownloaded": true
+    },
+    {
+      "id": 27405284,
+      "width": 3456,
+      "height": 5184,
+      "src": {
+        "original": "https://images.pexels.com/photos/27405284/pexels-photo-27405284.jpeg",
+        "large2x": "https://images.pexels.com/photos/27405284/pexels-photo-27405284.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "large": "https://images.pexels.com/photos/27405284/pexels-photo-27405284.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        "medium": "https://images.pexels.com/photos/27405284/pexels-photo-27405284.jpeg?auto=compress&cs=tinysrgb&h=350",
+        "small": "https://images.pexels.com/photos/27405284/pexels-photo-27405284.jpeg?auto=compress&cs=tinysrgb&h=130",
+        "portrait": "https://images.pexels.com/photos/27405284/pexels-photo-27405284.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
+        "landscape": "https://images.pexels.com/photos/27405284/pexels-photo-27405284.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+        "tiny": "https://images.pexels.com/photos/27405284/pexels-photo-27405284.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"
+      },
+      "photographer": "Raymond Petrik",
+      "photographer_url": "https://www.pexels.com/@raymond-petrik-1448389535",
+      "photographer_id": 1448389535,
+      "avg_color": "#7D4632",
+      "alt": "cappuccino",
+      "isDownloaded": true
+    }
+  ],
+  "Search": [
+    {
+      "name": "love",
+      "date": "Sun, 9/1/2024",
+      "results": 8000,
+      "type": "portrait"
+    },
+    {
+      "name": "sea",
+      "date": "Sun, 9/1/2024",
+      "results": 8000,
+      "type": "landscape"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallaryapp/locator.dart';
+import 'package:gallaryapp/services/primisions/request_permission.dart';
 import 'package:gallaryapp/services/shared_pref/shared_pref.dart';
 import 'package:gallaryapp/ui/screens/explorer_screen/cubit/search_api_cubit.dart';
 import 'package:gallaryapp/ui/screens/home_screen/cubit/photo_storage_cubit.dart';
@@ -33,7 +34,7 @@ void main() async {
   await Hive.openBox<SearchModel>(HiveBoxNames.searchBox);
   //storage
   await const Storage().makeBaseDirectory();
-
+  await requestPermission();
   runApp(const MainApp());
 }
 

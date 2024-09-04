@@ -46,7 +46,7 @@ class PhotoModel extends HiveObject {
       'width': width,
       'height': height,
       'src': src,
-      'photographer_name': photographerName,
+      'photographer': photographerName,
       'photographer_url': photographerUrl,
       'photographer_id': photographerId,
       'avg_color': avgColor,
@@ -70,7 +70,7 @@ class PhotoModel extends HiveObject {
     );
   }
 
-  String toJson() => json.encode(toMap());
+  String toJson() => JsonEncoder.withIndent("    ").convert(toMap());
 
   factory PhotoModel.fromJson(String source) =>
       PhotoModel.fromMap(json.decode(source) as Map<String, dynamic>);

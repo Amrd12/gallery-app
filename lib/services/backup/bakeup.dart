@@ -19,9 +19,10 @@ class Backup {
   final PhotosRepo _photosRepo = locator.get<PhotosRepo>();
   final SearchRepo _searchRepo = locator.get<SearchRepo>();
 
-  String _makeData() => jsonEncode({
-        "Photos": _photoManager.getAllSaved(),
-        "Search": _searchManager.getAllSaved(),
+  String _makeData() => JsonEncoder.withIndent("    ").convert({
+        "Photos": List.from(_photoManager.getAllSaved().map((e) => e.toJson())),
+        "Search":
+            List.from(_searchManager.getAllSaved().map((e) => e.toJson())),
       });
 
   Future<void> restore(
@@ -32,10 +33,10 @@ class Backup {
       onCancel();
       return;
     }
-    List<PhotoModel> photosList = _photosRepo.photosMap(data["Photos"]!);
-    _photoManager.addAll(photosList);
+    List<PhotoModel> photosList = _photosRepo.photosMapList(data["Photos"]!);
+    _photoManager.addAll(photosList.where((test) => !test.isInBox).toList());
     List<SearchModel> searchList = _searchRepo.pareseSearch(data["Search"]!);
-    _searchManager.addAll(searchList);
+    _searchManager.addAll(searchList.where((test) => !test.isInBox));
     onCompelete();
   }
 
@@ -43,6 +44,8 @@ class Backup {
       {required void Function() onCancel,
       required void Function() onCompelete}) async {
     try {
+      String data = _makeData();
+      log(data);
       String? fileName = await FilePicker.platform.saveFile(
         fileName:
             "Backup ${DateFormat('EEE, M-d-y').format(DateTime.now()).toString()}.json",
@@ -51,7 +54,6 @@ class Backup {
         dialogTitle: 'Save Backup',
       );
       if (fileName != null) {
-        String data = _makeData();
         // Assuming you want to save this data to the file
         await _storage.saveDataToFile(fileName, data);
         onCompelete();
@@ -78,9 +80,6 @@ class Backup {
         String fileContent = utf8.decode(result.files.single.bytes!);
         Map<String, dynamic> data = jsonDecode(fileContent);
 
-        // Example: You can now use this data in your app
-        log('Photos: ${data["Photos"]}');
-        log('Search: ${data["Search"]}');
         return data;
       }
     } on PlatformException catch (e) {

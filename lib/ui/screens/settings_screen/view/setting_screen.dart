@@ -55,6 +55,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("Language").tr(),
+                    SizedBox(width: 15),
                     DropdownButton<Locale>(
                       value: context.locale,
                       items: [
@@ -71,14 +72,15 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () => _backup.restore(
-                        onCancel: () => _showSnackBar("restore Canceled"),
-                        onCompelete: () => _showSnackBar("restore Compelete")),
+                        onCancel: () => _showSnackBar("canceled".tr()),
+                        onCompelete: () =>
+                            _showSnackBar("RestoreSuccess".tr())),
                     child: Text("restore".tr())),
                 if (!_sharedPref.isFirstRun)
                   ElevatedButton(
                       onPressed: () => _backup.saveFile(
-                          onCancel: () => _showSnackBar("Save Canceled"),
-                          onCompelete: () => _showSnackBar("Save Compelete")),
+                          onCancel: () => _showSnackBar("canceled".tr()),
+                          onCompelete: () => _showSnackBar("SaveSuccess".tr())),
                       child: Text("save".tr())),
                 if (_sharedPref.isFirstRun)
                   ElevatedButton(

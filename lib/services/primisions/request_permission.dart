@@ -6,11 +6,17 @@ Future<void> requestPermission() async {
   try {
     // Check if audio and storage permissions are already granted
     final bool storage = await Permission.manageExternalStorage.isGranted;
+    final bool photos = await Permission.photos.isGranted;
+    final bool videos = await Permission.videos.isGranted;
+    final bool audio = await Permission.audio.isGranted;
 
     // If permissions are not granted, request them
-    if (!storage) {
+    if (!storage && !photos && !videos && !audio) {
       final Map<Permission, PermissionStatus> statuses = await [
         Permission.storage,
+        Permission.videos,
+        Permission.photos,
+        Permission.audio,
       ].request();
 
       // If permissions are permanently denied, open app settings
